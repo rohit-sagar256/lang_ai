@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 
 load_dotenv()
 
@@ -28,7 +29,8 @@ Musk was the largest donor in the 2024 U.S. presidential election, where he supp
         template=summary_template,
     )
 
-    llm = ChatOpenAI(temperature=0, model="gpt-5")
+    # llm = ChatOpenAI(temperature=0, model="gpt-5")
+    llm = ChatOllama(temperature=0, model="gemma3:270m")
 
     chain = summary_prompt_template | llm
 
